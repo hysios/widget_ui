@@ -4,7 +4,7 @@ require File.expand_path("../../spec_helper", __FILE__)
 
 describe "SampleController" do
   before :each do 
-    SampleController.send(:include, WidgetUI::ControllerMethods)
+    SampleController.send(:include, WidgetUI::Rails::ControllerMethodsLoader)
   end 
 
   it "widgets_binding" do 
