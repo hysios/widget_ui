@@ -7,7 +7,9 @@ module WidgetUI
       if name.start_with?(WIDGETS_METHOD_PREFIX)
         class_name = name[WIDGETS_METHOD_PREFIX.length..-1].classify
 
-        cb = DSL::ControlsBuilder.new(class_name, &block)
+        widget_constant = ExtendWidget.generator(class_name + "Widget", name)
+
+        cb = DSL::ControlsBuilder.new(widget_constant, &block)
       else
         super
       end        
