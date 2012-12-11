@@ -5,7 +5,7 @@ module WidgetUI
     module ClassMethods
 
       def widgets_binding(&block)
-        WidgetUI::DSL::DSLBuilder.new(&block).dispatch
+        WidgetsBuilder.new(&block).dispatch
       end
     end
   end

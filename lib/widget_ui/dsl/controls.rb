@@ -1,8 +1,6 @@
 module WidgetUI
-  module Controls
-    extend ActiveSupport::Concern
-
-    class ControlsBuilder < WidgetUI::Builder
+  module DSL
+    class ControlsBuilder < Builder
 
       WIDGETS_METHOD_PREFIX = "create_"
 
