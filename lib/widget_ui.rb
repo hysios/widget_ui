@@ -6,4 +6,5 @@ end
 
 require 'widget_ui/base_widget'
 require 'widget_ui/dsl'
+require 'widget_ui/widgets_builder'
 require 'widget_ui/controller_methods'
