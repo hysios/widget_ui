@@ -6,7 +6,6 @@ module WidgetUI
       name = name.to_s
       if name.start_with?(WIDGETS_METHOD_PREFIX)
         class_name = name[WIDGETS_METHOD_PREFIX.length..-1].classify
-        debugger
 
         cb = DSL::ControlsBuilder.new(class_name, &block)
       else

@@ -6,7 +6,7 @@ module WidgetUI
 
       def widgets_binding(&block)
         begin 
-          WidgetsBuilder.new(&block).dispatch
+          WidgetUI::WidgetsBuilder.new(&block).dispatch
         rescue Exception => e
           raise
         end
