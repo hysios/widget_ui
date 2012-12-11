@@ -5,7 +5,11 @@ module WidgetUI
     module ClassMethods
 
       def widgets_binding(&block)
-        WidgetsBuilder.new(&block).dispatch
+        begin 
+          WidgetsBuilder.new(&block).dispatch
+        rescue Exception => e
+          raise
+        end
       end
     end
   end
