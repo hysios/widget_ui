@@ -1,6 +1,6 @@
 require "rails/railtie"
 
-module Apotomo
+module WidgetUI
   class Railtie < ::Rails::Railtie
 
     # Include a lazy loader via has_widgets.

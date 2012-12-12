@@ -1,20 +1,16 @@
-require File.expand_path("../button_widget", __FILE__)
 require File.expand_path("../../spec_helper", __FILE__)
-
+require File.expand_path("../button_widget", __FILE__)
+require File.expand_path('../controller', __FILE__)
 
 describe "SampleController" do
-  before :each do 
-    SampleController.send(:include, WidgetUI::Rails::ControllerMethodsLoader)
-  end 
+  let(:controller) { SampleController.new }
 
   it "widgets_binding" do 
-    SampleController.widgets_binding do
-      create_button :new_content do 
-        on_click do
-          render :js => "alert('hi baby');"
-        end
-      end
-    end   
+    controller.apotomo_root.should_not be_nil    
   end
 
+
+  it "trigget click event" do
+    controller.trigger(:click, :new_content)
+  end
 end

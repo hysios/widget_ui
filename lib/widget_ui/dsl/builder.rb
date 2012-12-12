@@ -2,12 +2,12 @@ module WidgetUI
   module DSL
   	class Builder
 
-      def initialize(&block)
-        @block = block
+      def initialize(controller_class)
+        @controller_class = controller_class
       end
 
-      def dispatch
-        self.instance_exec(&@block)
+      def dispatch(&block)
+        self.instance_exec(&block)
       end
   	end
   end

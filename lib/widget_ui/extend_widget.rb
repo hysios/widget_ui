@@ -4,10 +4,11 @@ module WidgetUI
 
     class << self
       def generator(class_name, base)
-
-        base_klass = find_widget base.to_s
+        klass = class_name.to_s.classify
+        base_class = base.to_s.classify
+        base_klass = find_widget base_class
         if base_klass < WidgetUI::UIBase
-          widget_klass = inherit_widget_class class_name, base_klass
+          widget_klass = inherit_widget_class klass, base_klass
         else
           raise InvalidClassError.new('must inherit WidgetUI::UIBase')
         end
