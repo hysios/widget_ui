@@ -8,7 +8,7 @@ class SampleController < ActionController::Base
       create_button :new_content do 
         on_click do
           puts "alert('hi baby');"
-          render :js => "alert('hi baby');"
+          # render :js => "alert('hi baby');"
         end
       end
     end

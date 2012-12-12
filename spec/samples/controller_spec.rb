@@ -4,9 +4,12 @@ require File.expand_path('../controller', __FILE__)
 
 describe "SampleController" do
   let(:controller) { SampleController.new }
+  let(:root) { controller.apotomo_root }
 
-  it "widgets_binding" do 
-    controller.apotomo_root.should_not be_nil    
+  it "widgets_binding_tree" do 
+    controller.apotomo_root.should_not be_nil
+    root.children[0].name.should == :button
+    root.children[1].name.should == :new_content
   end
 
 

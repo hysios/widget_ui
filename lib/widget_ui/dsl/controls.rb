@@ -23,7 +23,7 @@ module WidgetUI
         end
 
         def bind_event(name, *args, &block)
-          @klass.bind(event_name, *args, &block)
+          @klass.bind(name, *args, &block)
         end
     end
   end

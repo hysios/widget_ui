@@ -6,8 +6,6 @@ class ButtonWidget < WidgetUI::UIBase
 	end
 
 	def click
-
-		debugger
 		puts 'click'
 	end
 end
