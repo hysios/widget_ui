@@ -12,11 +12,11 @@ module WidgetUI
                         raise ArgumentError.new("invalid class, must contains below `Symbol' `String'")
                       end
 
-        add_widget base_name, *args
+        add_widget class_name.to_sym, base_name, *args
 
-        widget_klass = ExtendWidget.generator(widget_symbol(class_name), base_name)
-        
-        add_widget class_name.to_sym, *args
+        # widget_klass = ExtendWidget.generator(widget_symbol(class_name), base_name)
+        widget_klass = "#{base_name}_widget".classify.constantize
+        # add_widget class_name.to_sym, *args
 
         cb = DSL::ControlsBuilder.new(@controller_class, widget_klass).dispatch(&block)
       end
@@ -29,8 +29,8 @@ module WidgetUI
         @root ||= NodeHash.new
       end
 
-      def add_widget(name, *args)
-        node << NodeHash.new(name, *args) unless root.find(name)
+      def add_widget(name, type,  *args)
+        node << NodeHash.new(name, type, *args) unless root.find(name)
       end
 
       def node
@@ -43,9 +43,14 @@ module WidgetUI
       end
 
       class NodeHash < Hash
-        def initialize(name = :root, *args)
+        def initialize(name = :root, type = nil, *args)
           self[:name] = name
           self[:args] = args
+          self[:type] = type || name
+        end
+
+        def type
+          self[:type]
         end
 
         def <<(node)
