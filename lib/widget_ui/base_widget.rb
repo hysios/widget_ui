@@ -17,7 +17,7 @@ module WidgetUI
         widget = root.find_widget(widget_id)
         if widget
           widget.action_name = state
-          widget.render(opts)
+          widget.render(opts, *args)
         else
           raise "not found named #{widget_id}'s Widget"
         end
