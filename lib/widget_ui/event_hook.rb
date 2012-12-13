@@ -17,12 +17,12 @@ module WidgetUI
       end
     end
 
-    def events_process(evt)
-      event, callback = self.class.events_callback.find do |key, value| 
-        evt.type == key
-      end
+    # def events_process(evt)
+    #   event, callback = self.class.events_callback.find do |key, value| 
+    #     evt.type == key
+    #   end
 
-      self.instance_exec &callback if callback.is_a? Proc
-    end
+    #   self.instance_exec &callback if callback.is_a? Proc
+    # end
   end
 end
