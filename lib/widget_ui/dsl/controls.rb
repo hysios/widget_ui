@@ -19,7 +19,6 @@ module WidgetUI
           bind_event event_name, *args, &block
         elsif name.start_with?(WIDGETS_METHOD_PREFIX)
           method_name = name[WIDGETS_METHOD_PREFIX.length..-1].to_sym
-          debugger
           prefix_create_method method_name, *args, &block          
         elsif option_name = @klass.option_methods.find {|m| m[:name] == _name}
           @klass.after_initialize self do 

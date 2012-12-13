@@ -7,9 +7,9 @@ describe "SampleController" do
   it "widgets_binding_tree" do 
     controller.apotomo_root.should_not be_nil
     root.children[0].name.should == :page
-    debugger
-    root.children[0].children[0].name.should == :new_content
-    root.children[1].name.should == :search
+    page = root.children[0]
+    page.children[0].name.should == :new_content
+    page.children[1].name.should == :search
 #    root.children[1].name.should == :new_content
   end
 

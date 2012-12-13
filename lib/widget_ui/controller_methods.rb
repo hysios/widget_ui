@@ -37,7 +37,8 @@ module WidgetUI
       end
 
       def add_widget(parent, _node)
-        parent << current = widget(_node.type, _node.name, *_node.args)
+        current = parent << widget(_node.type, _node.name, *_node.args)
+
         if _node.children.size > 0
           _node.children.each do |__node|
             add_widget(current, __node)
