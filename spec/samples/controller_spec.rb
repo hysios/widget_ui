@@ -1,6 +1,4 @@
 require File.expand_path("../../spec_helper", __FILE__)
-require File.expand_path("../button_widget", __FILE__)
-require File.expand_path('../controller', __FILE__)
 
 describe "SampleController" do
   let(:controller) { SampleController.new }

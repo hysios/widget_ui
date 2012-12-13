@@ -1,8 +1,11 @@
+require File.expand_path '../test_help', __FILE__
+
 class SampleController < ActionController::Base
     extend WidgetUI::Rails::ControllerMethodsLoader
     extend Apotomo::Rails::ControllerMethodsLoader
     include Apotomo::Rails::ControllerMethodsLoader
 	  include WidgetUI::Rails::ControllerMethodsLoader
+    include Rails.application.routes.url_helpers
 
   	widgets_binding do
       create_button :new_content do 
@@ -11,6 +14,8 @@ class SampleController < ActionController::Base
           # render :js => "alert('hi baby');"
         end
       end
+
+      create_page :page
     end
 
     def trigger(type, source, options={})

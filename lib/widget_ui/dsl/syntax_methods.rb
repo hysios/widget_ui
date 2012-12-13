@@ -18,7 +18,8 @@ module WidgetUI
         widget_klass = "#{base_name}_widget".classify.constantize
         # add_widget class_name.to_sym, *args
 
-        cb = DSL::ControlsBuilder.new(@controller_class, widget_klass).dispatch(&block)
+        cb = DSL::ControlsBuilder.new(@controller_class, widget_klass)
+        cb.dispatch(&block) if block_given? 
       end
 
       def widget_symbol(name)
