@@ -15,7 +15,9 @@ class SampleController < ActionController::Base
         end
       end
 
-      create_page :page
+      create_page :page do 
+        state :new, "page/new"
+      end
     end
 
     def trigger(type, source, options={})

@@ -11,6 +11,6 @@ class ButtonWidget < WidgetUI::UIBase
 	end
 
 	def goto_page
-		render :widget => :page, :state => :display
+		render :widget => :page, :state => :show
 	end
 end

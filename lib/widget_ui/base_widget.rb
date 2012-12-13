@@ -1,8 +1,11 @@
 require 'widget_ui/event_hook'
+require 'widget_ui/option_methods'
 
 module WidgetUI
   class UIBase < Apotomo::Widget
     include WidgetUI::EventHook
+    include WidgetUI::OptionMethods
+
 
     private 
     def render_view_for(state, *args)

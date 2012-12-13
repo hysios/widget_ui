@@ -6,7 +6,7 @@ module WidgetUI
 
       def initialize(controller_class, klass)
         @klass = klass
-        super(context)
+        super(controller_class)
       end
 
       def method_missing(_name, *args, &block)
@@ -14,6 +14,12 @@ module WidgetUI
         if name.start_with?(ON_METHOD_PREFIX)
           event_name = extract_method_name name
           bind_event event_name, *args, &block
+        elsif option_name = @klass.option_methods.find {|m| m[:name] == _name}
+          @klass.after_initialize self do 
+            self.send(_name, *args, &block)
+          end
+        else
+          super
         end
       end
 
