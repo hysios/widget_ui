@@ -27,8 +27,8 @@ module WidgetUI
 
         def build_widget_tree(node_root)
           has_widgets do |root|
-            node_root.children.each do |node|
-              add_widget(root, node)
+            node_root.children.each do |_node|
+              add_widget(root, _node)
             end
           end
         end
@@ -36,11 +36,11 @@ module WidgetUI
 
       end
 
-      def add_widget(parent, node)
-        parent << current = widget(node.type, node.name, *node.args)
-        if node.children.size > 0
-          node.children.each do |node|
-            add_widget(current, node)
+      def add_widget(parent, _node)
+        parent << current = widget(_node.type, _node.name, *_node.args)
+        if _node.children.size > 0
+          _node.children.each do |__node|
+            add_widget(current, __node)
           end
         end
       end      

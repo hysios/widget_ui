@@ -1,11 +1,14 @@
 module WidgetUI
   module DSL
     class ControlsBuilder < Builder
+      include WidgetUI::DSL::SyntaxMethods
 
       ON_METHOD_PREFIX = "on_"
-
-      def initialize(controller_class, klass)
+      WIDGETS_METHOD_PREFIX = "create_"
+      
+      def initialize(controller_class, klass, node)
         @klass = klass
+        @root = node
         super(controller_class)
       end
 
@@ -14,6 +17,10 @@ module WidgetUI
         if name.start_with?(ON_METHOD_PREFIX)
           event_name = extract_method_name name
           bind_event event_name, *args, &block
+        elsif name.start_with?(WIDGETS_METHOD_PREFIX)
+          method_name = name[WIDGETS_METHOD_PREFIX.length..-1].to_sym
+          debugger
+          prefix_create_method method_name, *args, &block          
         elsif option_name = @klass.option_methods.find {|m| m[:name] == _name}
           @klass.after_initialize self do 
             self.send(_name, *args, &block)

@@ -5,5 +5,5 @@ end
 
 dsl_path = File.dirname __FILE__
 require File.join dsl_path, 'dsl/builder'
-require File.join dsl_path, 'dsl/controls'
 require File.join dsl_path, 'dsl/syntax_methods'
+require File.join dsl_path, 'dsl/controls'

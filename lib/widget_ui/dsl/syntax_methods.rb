@@ -17,8 +17,7 @@ module WidgetUI
         # widget_klass = ExtendWidget.generator(widget_symbol(class_name), base_name)
         widget_klass = "#{base_name}_widget".classify.constantize
         # add_widget class_name.to_sym, *args
-
-        cb = DSL::ControlsBuilder.new(@controller_class, widget_klass)
+        cb = DSL::ControlsBuilder.new(@controller_class, widget_klass, node_for(base_name))
         cb.dispatch(&block) if block_given? 
       end
 
@@ -26,16 +25,16 @@ module WidgetUI
         "#{name}_widget".to_sym
       end
 
+      def node_for(name)
+        root.children.find {|node| node.name == name}
+      end
+
       def root
         @root ||= NodeHash.new
       end
 
       def add_widget(name, type,  *args)
-        node << NodeHash.new(name, type, *args) unless root.find(name)
-      end
-
-      def node
-        @node ||= root
+        root << NodeHash.new(name, type, *args) unless root.find(name)
       end
 
       protected

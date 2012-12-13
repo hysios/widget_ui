@@ -8,15 +8,18 @@ class SampleController < ActionController::Base
     include Rails.application.routes.url_helpers
 
   	widgets_binding do
-      create_button :new_content do 
-        on_click do
-          puts "alert('hi baby');"
-          # render :js => "alert('hi baby');"
-        end
-      end
-
       create_page :page do 
         state :new, "page/new"
+
+        create_button :new_content do 
+          on_click do
+            puts "alert('hi baby');"
+            # render :js => "alert('hi baby');"
+          end
+        end
+
+        create_search :search do 
+        end
       end
     end
 
