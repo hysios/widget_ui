@@ -22,7 +22,7 @@ module WidgetUI
         evt.type == key
       end
 
-      self.instance_exec &callback if callback.is_a? Proc
+      self.instance_exec evt, &callback if callback.is_a? Proc
     end
   end
 end
