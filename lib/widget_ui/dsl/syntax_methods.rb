@@ -3,6 +3,7 @@ module WidgetUI
     module SyntaxMethods
 
       def prefix_create_method(base_name, *args, &block)
+
         class_name = case class_name = args.shift
                       when Symbol
                         class_name.to_s
@@ -17,7 +18,7 @@ module WidgetUI
         # widget_klass = ExtendWidget.generator(widget_symbol(class_name), base_name)
         widget_klass = "#{base_name}_widget".classify.constantize
         # add_widget class_name.to_sym, *args
-        cb = DSL::ControlsBuilder.new(@controller_class, widget_klass, node_for(base_name))
+        cb = DSL::ControlsBuilder.new(@controller_class, widget_klass, node_for(class_name.to_sym))
         cb.dispatch(&block) if block_given? 
       end
 
