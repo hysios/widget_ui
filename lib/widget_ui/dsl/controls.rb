@@ -22,7 +22,7 @@ module WidgetUI
           prefix_create_method method_name, *args, &block          
         elsif option_name = @klass.option_methods.find {|m| m[:name] == _name}
           @klass.after_initialize self do 
-            self.send(_name, *args, &block)
+            self.send(option_name[:method], *args, &block)
           end
         else
           super
