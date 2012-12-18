@@ -24,6 +24,7 @@ describe "SampleController" do
 
 
   it "widgets_binding_tree" do 
+    controller.widget_builder
     controller.apotomo_root.should_not be_nil
     root.children[0].name.should == :page
     page = root.children[0]

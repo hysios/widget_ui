@@ -2,8 +2,8 @@ module WidgetUI
   module DSL
   	class Builder
 
-      def initialize(controller_class)
-        @controller_class = controller_class
+      def initialize(controller)
+        @controller = controller
       end
 
       def dispatch(&block)

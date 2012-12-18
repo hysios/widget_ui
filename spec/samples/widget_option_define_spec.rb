@@ -27,7 +27,7 @@ end
 
 describe "option define test" do
 	let(:controller) { OptionDefineController.new }
-	let(:root) { controller.apotomo_root }
+	let(:root) { controller.widget_builder; controller.apotomo_root }
 	let(:content_page) { root.find_widget(:content_page) }
 
 	it "set view_path other path" do 

@@ -4,6 +4,14 @@ module WidgetUI
 
     WIDGETS_METHOD_PREFIX = "create_"
 
+    def context
+      @controller
+    end
+
+    def [](name)
+      @controller.instance_variable_get(name)
+    end
+
     def method_missing(_name, *args, &block)
       name = _name.to_s
       if name.start_with?(WIDGETS_METHOD_PREFIX) && args.size > 0
